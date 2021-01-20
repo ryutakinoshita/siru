@@ -1,0 +1,34 @@
+{% extends 'siru/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block body %}
+<h5 class="change_title">ユーザー名・ユーザー情報の変更</h5>
+<section class="change_user">
+
+<form class="" id="" method="post"　action="{% url 'user-change' %}">
+  {% csrf_token %}
+    <hr class="sign_hr" color="black">
+<div class="change_buttons">
+<button type="submit" class="btn btn-outline-success" id="change_button">変更</button>
+</div>
+<div class="username">
+<table class="table">{% render_field form.username class="change-username" placeholder="ユーザー名を入力してください。" %}</table>
+</div>
+<div class="profile">
+    <label for="profile" class="signup_text"></label>
+    <table class="table">{% render_field form.profile　class="change-profile" placeholder="あなたのユーザー情報欄を変更しましょう。" %}</table>
+</div>
+</form>
+</section>
+    <footer>
+  <div class="fixed-bottom">
+<nav class="footerNav" >
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+   <a class="nav-link" id="nav-home-tab" href="{% url 'home' %}" role="tab" ><img class="nav_img" src="{% static 'img/home.png' %}" alt="ホーム"></a>
+   <a class="nav-link" id="nav-add-tab"  href="{% url 'create' %}" ><img class="nav_img" src="{% static 'img/add.png' %}" alt="投稿"></a>
+   <a class="nav-link active" id="nav-set-tab" href="{% url 'set' %}" ><img class="nav_img" src="{% static 'img/set.png' %}" alt="設定"></a>
+  </div>
+</nav>
+    </div>
+</footer>
+{% endblock body %}

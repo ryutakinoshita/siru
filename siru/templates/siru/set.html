@@ -1,0 +1,39 @@
+{% extends 'siru/base.html' %}
+{% load static %}
+
+
+{% block body %}
+<main class="set">
+    <div class="alert">
+        <h4 class="user_information">ユーザー情報</h4>
+        <hr color="black">
+         <a href="{% url 'My-page' user.id %}"><h6 class="settitle">マイページ</h6></a>
+        <hr>
+         <a href="{% url 'user-change-page' %}"><h6 class="settitle">情報の変更</h6></a>
+        <hr>
+        <h4 class="help">ヘルプ</h4>
+        <hr color="black">
+        <a href="#"><h6 class="settitle">siruについて</h6></a>
+        <hr>
+        <a href="#"><h6 class="settitle">利用規約</h6></a>
+        <hr>
+        <a href="#"><h6 class="settitle">お問い合わせ</h6></a>
+        <hr>
+    </div>
+
+</main>
+
+
+    <footer>
+        <div class="fixed-bottom">
+            <nav class="footerNav sticky-bottom" >
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                     <a class="nav-link" id="nav-home-tab" href="{% url 'home' %}" role="tab" ><img class="nav_img" src="{% static 'img/home.png' %}" alt="ホーム"></a>
+                     <a class="nav-link" id="nav-add-tab"  href="{% url 'create' %}" ><img class="nav_img" src="{% static 'img/add.png' %}" alt="投稿"></a>
+                     <a class="nav-link active" id="nav-set-tab" href="{% url 'set' %}" ><img class="nav_img" src="{% static 'img/set.png' %}" alt="設定"></a>
+                  </div>
+            </nav>
+        </div>
+    </footer>
+{% endblock body %}
+

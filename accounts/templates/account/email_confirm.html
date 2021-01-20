@@ -1,0 +1,32 @@
+{% extends 'account/user_base.html' %}
+{% load account %}
+{% load static %}
+
+
+
+
+{% block body%}
+
+
+{% if confirmation %}
+
+
+
+<section class="user_log">
+<h3>ご登録ありがとうございます</h3>
+<p>登録ボタンを押しメールアドレスでの二段階認証をお済ませください。</p>
+<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+
+{% csrf_token %}
+<button type="submit" class="btn btn-outline-danger">登録</button>
+</form>
+</section>
+{% else %}
+
+{% url 'account_email' as email_url %}
+
+<p>リンクの有効期限が過ぎています。<a href="{{ email_url }}">再申請</a>.</p>
+
+{% endif %}
+
+{% endblock body%}

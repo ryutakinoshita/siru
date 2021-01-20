@@ -1,0 +1,57 @@
+{% extends 'siru/base.html' %}
+{% load static %}
+{% block body %}
+
+<section class="my_page">
+<p class="my_name">name</p>
+<div class="my_page_username">
+    <p class="user_info">{{ user.username }}</p>
+    <a class="button_my_page" href="{% url 'user-change' %}">
+    <button type="button" class="btn btn-outline-success" id="my_page_id_button">変更</button>
+    </a>
+</div>
+<hr class="my_page_hr">
+<p class="my_profile">自己紹介</p>
+<div class="my_page_profile">
+    <p class="user_info">{{ user.profile }}</p><a class="button_my_page" href="{% url 'user-change' %}">
+    <button type="button" class="btn btn-outline-success" id="my_page_id_button">変更</button>
+    </a>
+</div>
+<hr class="my_page_hr">
+<p class="my_email">メールアドレス</p>
+<div class="my_page_email">
+    <p class="user_info">{{ user.email }}</p><a class="button_my_page" href="#">
+    <button type="button" class="btn btn-outline-success" id="my_page_id_button">変更</button>
+    </a>
+</div>
+
+</section>
+<h5 class="my_page_h5">My Post</h5>
+        {% for post in object.post_set.all %}
+<section class="my_page_post">
+
+  <div class="card-body">
+    <h4 class="card-title">{{ post.title|truncatechars:20}}</h4>
+      <hr>
+    <p class="card-text">{{ post.text|truncatechars:50 }}</p>
+
+  </div>
+    <p class="card-author">投稿者:{{ post.author}}</p>
+    <p class="card-time">{{ post.time|date:'Y/m/d' }}</p>
+</div>
+
+</section>
+
+    {% endfor %}
+      <footer>
+        <div class="fixed-bottom">
+            <nav class="footerNav sticky-bottom" >
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                     <a class="nav-link" id="nav-home-tab" href="{% url 'home' %}" role="tab" ><img class="nav_img" src="{% static 'img/home.png' %}" alt="ホーム"></a>
+                     <a class="nav-link" id="nav-add-tab"  href="{% url 'create' %}" ><img class="nav_img" src="{% static 'img/add.png' %}" alt="投稿"></a>
+                     <a class="nav-link active" id="nav-set-tab" href="{% url 'set' %}" ><img class="nav_img" src="{% static 'img/set.png' %}" alt="設定"></a>
+                  </div>
+            </nav>
+        </div>
+    </footer>
+{% endblock body %}

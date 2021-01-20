@@ -1,0 +1,33 @@
+{% extends 'siru/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block body %}
+
+<form class="create_post" id="post_create" method="post" action="{% url 'create' %}">
+  {% csrf_token %}
+<div class="creates_button">
+<button type="submit" class="btn btn-outline-success" id="create_button">投稿</button>
+    </div>
+<section class="post">
+<table class="title_table">
+{% render_field form.title class="post_title" placeholder="タイトル" %}
+</table>
+<table class="text_table">
+{% render_field form.text class="post_text" placeholder="相談してみましょう" %}
+</table>
+</section>
+</form>
+<footer>
+    <div class="fixed-bottom">
+<nav class="footerNav" >
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+   <a class="nav-link" id="nav-home-tab" href="{% url 'home' %}" role="tab" ><img class="nav_img" src="{% static 'img/home.png' %}" alt="ホーム"></a>
+   <a class="nav-link active" id="nav-add-tab"  href="{% url 'create' %}" ><img class="nav_img" src="{% static 'img/add.png' %}" alt="投稿"></a>
+    <a class="nav-link" id="nav-set-tab" href="{% url 'set' %}" ><img class="nav_img" src="{% static 'img/set.png' %}" alt="設定"></a>
+  </div>
+</nav>
+    </div>
+</footer>
+
+{% endblock body %}

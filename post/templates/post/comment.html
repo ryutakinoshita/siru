@@ -1,0 +1,13 @@
+{% extends 'siru/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+      <form method="post" action="">
+        {% csrf_token %}
+<table class="title_table">
+{% render_field form.comment_text class="post_title" placeholder="タイトル" %}
+</table>
+</table>
+
+<button type="submit" class="btn btn-outline-success" id="create_button">投稿</button>
+      </form>

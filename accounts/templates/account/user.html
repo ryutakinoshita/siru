@@ -1,0 +1,45 @@
+{% extends 'account/user_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block body %}
+<section class="user_sign">
+<form class="signup" id="signup_form" method="post"　action="{% url 'user' %}">
+  {% csrf_token %}
+<hr class="log_hr">
+<div class="username">
+ <label for="username" class="signup_text">ユーザー名<span class="badge badge-danger">必須</span></label>
+<table class="table">{% render_field form.username class="form-username" placeholder="ユーザー名を入力してください。" %}</table>
+</div>
+<hr class="sign_hr">
+<div class="profile">
+    <label for="profile" class="signup_text">ユーザー情報</label>
+    <table class="table">{% render_field form.profile　class="form-profile" placeholder="あなたのユーザー情報欄を自由にカスタマイズしてみてください。" %}</table>
+</div>
+<hr class="sign_hr">
+<div class="email">
+    <label for="email" class="signup_text">メールアドレス<span class="badge badge-danger">必須</span></label>
+    <table class="table">{% render_field form.email class="form-email" placeholder="メールアドレス入力してください。" %}</table>
+</div>
+<hr class="sign_hr">
+<div class="password1">
+    <label for="password1" class="signup_text">パスワード<span class="badge badge-danger">必須</span></label>
+    <table class="table">{% render_field form.password1 class="form-password" placeholder="パスワードを半角英数字8文字以上で入力してください。" %}</table>
+</div>
+<hr class="sign_hr">
+<div class="password2">
+    <label for="password2" class="signup_text">パスワード確認用<span class="badge badge-danger">必須</span></label>
+    <table class="table">{% render_field form.password2 class="form-password" placeholder="同じパスワードを入力してください。" %}</table>
+</div>
+    {% if redirect_field_value %}
+<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+{% endif %}
+<hr class="sign_hr">
+<button type="submit" class="btn btn-outline-danger">登録</button>
+</form>
+<div class="signup_link">
+<a href= "{% url 'account_login' %}"><p class="log_text">既にアカウントをお持ちの方</p></a>
+    </div>
+</section>
+
+    {% endblock body %}
