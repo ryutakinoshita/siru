@@ -4,12 +4,17 @@
 
 {% block body %}
 
-      <form method="post" action="">
+      <form method="POST" action="">
         {% csrf_token %}
+          <table class="title_table">
+{% render_field form.author class="post_title" placeholder="ユーザー名" %}
+</table>
+
 <table class="title_table">
-{% render_field form.text class="post_title" placeholder="タイトル" %}
+{% render_field form.text class="post_title"  %}
 </table>
 
 <button type="submit" class="btn btn-outline-success" id="create_button">投稿</button>
       </form>
+
 {% endblock body %}

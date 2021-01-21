@@ -64,7 +64,7 @@ class CommentView(CreateView,LoginRequiredMixin):
     template_name = 'post/comment.html'
     model = Comment
     form_class = CommentForm
-    # success_url = reverse_lazy('detail')
+
 
     def form_valid(self, form):
         post_pk = self.kwargs['pk']
@@ -78,4 +78,7 @@ class CommentView(CreateView,LoginRequiredMixin):
         context = super().get_context_data(**kwargs)
         context['post'] = get_object_or_404(Post, pk=self.kwargs['pk'])
         return context
+
+
+
 
