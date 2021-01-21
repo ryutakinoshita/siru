@@ -12,3 +12,12 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
+class Comment(models.Model):
+    target=models.ForeignKey(Post,verbose_name='該当の投稿',on_delete=models.CASCADE)
+    author=models.CharField(max_length=30, null=False, blank=True,verbose_name='ユーザー')
+    text=models.TextField(verbose_name='コメント')
+    time=models.DateTimeField(verbose_name='回答日',default=timezone.now)
+
+    def __str__(self):
+        return self.text

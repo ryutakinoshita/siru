@@ -22,10 +22,6 @@ def signup(request):
 
 
 #ユーザー情報変更View
-
-from django.views.generic import FormView
-
-
 class UserChangeView(LoginRequiredMixin,FormView):
     template_name = 'account/user_text_change.html'
     form_class = UserChangeForm
@@ -47,6 +43,6 @@ class UserChangeView(LoginRequiredMixin,FormView):
 class MyPageView(LoginRequiredMixin,DetailView):
     template_name = 'account/user_my_page.html'
     model = User
-    slug_field = 'username'
-    slug_url_kwarg = 'username'
+    slug_field = 'username','profile'
+    slug_url_kwarg = 'username','profile'
 

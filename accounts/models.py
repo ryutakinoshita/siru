@@ -55,7 +55,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         return "/users/%i/" % (self.pk)
 
     def __str__(self):
-                return self.name
-    def __str__(self):
-                return self.profile
+                return self.username
 

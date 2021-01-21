@@ -2,12 +2,14 @@
 {% load static %}
 {% load widget_tweaks %}
 
+{% block body %}
+
       <form method="post" action="">
         {% csrf_token %}
 <table class="title_table">
-{% render_field form.comment_text class="post_title" placeholder="タイトル" %}
-</table>
+{% render_field form.text class="post_title" placeholder="タイトル" %}
 </table>
 
 <button type="submit" class="btn btn-outline-success" id="create_button">投稿</button>
       </form>
+{% endblock body %}
