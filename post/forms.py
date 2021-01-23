@@ -15,4 +15,3 @@ class CommentForm(ModelForm):
         fields=[
             'text'
         ]
-        exclude = ('target', 'time','author')

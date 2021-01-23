@@ -66,7 +66,9 @@ class CommentView(CreateView,LoginRequiredMixin):
     form_class = CommentForm
 
 
-    def form_valid(self, form):
+
+    def form_valid(self, form ):
+        form.instance.author = self.request.user
         post_pk = self.kwargs['pk']
         post = get_object_or_404(Post, pk=post_pk)
         comment = form.save(commit=False)
@@ -74,11 +76,10 @@ class CommentView(CreateView,LoginRequiredMixin):
         comment.save()
         return redirect('detail',pk=post_pk)
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['post'] = get_object_or_404(Post, pk=self.kwargs['pk'])
         return context
-
-
 
 
