@@ -2,11 +2,13 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block body %}
-
+<hr color="black" class="new_hr_top">
+<h5 class="form_new">新規投稿</h5>
+<hr color="black" class="new_hr_bottom">
 <form class="create_post" id="post_create" method="post" action="{% url 'create' %}">
   {% csrf_token %}
 <div class="creates_button">
-<button type="submit" class="btn btn-outline-success" id="create_button">投稿</button>
+<button type="submit" class="post_creative"><img class="post_img" src="{% static 'img/post.png' %}" alt=""></button>
     </div>
 <section class="post">
 <table class="title_table">

@@ -12,7 +12,7 @@
           <a class="nav-link active" href="{% url 'detail' post.id %}">詳細</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">コメント</a>
+        <a class="nav-link" href="{% url 'comment' post.id %}">コメント</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="#">ユーザー</a>
@@ -28,15 +28,23 @@
     <p class="card-time">{{ post.time|date:'Y/m/d' }}</p>
 </div>
 </section>
+     <hr color="black" class="new_hr_top">
+<h4 class="comment_list">コメント一覧</h4>
+        <hr color="black" class="new_hr_bottom">
+{% for comment in post.comment_set.all %}
+    <div class="comment_contents">
+    <h6 class="comment_author">回答者:{{ comment.author }}</h6>
+    <hr color="black">
+    <p class="comment_text_list">{{ comment.text }}</p>
+        <hr color="black">
+    <p class="comment_time">{{ comment.time|date:'Y/m/d'  }}</p>
+    </div>
 
-
+{% endfor %}
 <footer>
 
+<div class="fixed-bottom">
 
-    <div class="fixed-bottom">
-<nav class="commentNav" >
-
-</nav>
 
 <nav class="footerNav" >
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -45,6 +53,6 @@
     <a class="nav-link" id="nav-set-tab" href="{% url 'set' %}" ><img class="nav_img" src="{% static 'img/set.png' %}" alt="設定"></a>
   </div>
 </nav>
-    </div>
+</div>
 </footer>
 {% endblock body %}

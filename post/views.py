@@ -33,6 +33,8 @@ class PostDetailView(DetailView):#投稿の詳細
     template_name = 'post/post_detail.html'
     model = Post
 
+
+
 class UpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):#投稿編集機能
     model = Post
     fields = ['title','text']
@@ -64,7 +66,6 @@ class CommentView(CreateView,LoginRequiredMixin):
     template_name = 'post/comment.html'
     model = Comment
     form_class = CommentForm
-
 
 
     def form_valid(self, form ):

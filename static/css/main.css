@@ -351,11 +351,17 @@ help{
 /*post_create.html*/
 
 .creates_button{
-    font-size:15px;
-    height: 24px;
-    width: auto;
-    line-height: 15px;
-    margin: 10px 0 30px 300px;
+    margin: 10px 0 20px 330px;
+}
+.post_creative{
+    padding: 0;
+    border: 0;
+
+}
+.post_img{
+    width: 35px;
+    height: 35px;
+    background:#f8f7f7 ;
 }
 
 .post{
@@ -383,6 +389,11 @@ help{
     height: 100vh;
     resize: none;
     border:none;
+}
+.form_new{
+    font-family: 'Sawarabi Mincho', sans-serif;
+    margin-left: 7px;
+    font-weight: bolder;
 }
 
 /*post_detail.html*/
@@ -412,22 +423,31 @@ help{
     margin-right: 5px;
     margin-bottom: 5px;
 }
-.comment_form{
+.comment_list{
+    font-family: 'Sawarabi Mincho', sans-serif;
+    margin-left: 7px;
+    font-weight: bolder;
+}
+.comment_contents{
+    background: #ffffff;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 3px #6d6c6c;
+}
+.comment_author{
+    padding-top: 15px;
+    padding-left: 3px;
+    font-size: 16px;
+}
+.comment_text_list{
+    text-align: center;
     margin: 0;
 }
-.commentNav {
-    background: #eeeeee;
-    padding: 0;
-    width: 100%;
-    border-radius: 2px;
-    box-shadow: 0 0 8px #6d6c6c;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.form-comment{
-    resize: none;
-    width:100%;
-    height:80px;
+.comment_time{
+    margin-bottom:5px;
+    text-align: right;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
 /*user_my_page.html*/
@@ -508,7 +528,42 @@ help{
 
 .my_page_post{
     background: #ffffff;
-    margin-bottom: 5px;
-     box-shadow: 0 0 8px #6d6c6c;
+    box-shadow: 0 0 8px #6d6c6c;
     margin-bottom: 15px;
+}
+
+/*comment.html*/
+
+.comment_text{
+    margin-top:10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100vh;
+    resize: none;
+    border:none;
+
+}
+.comment_new{
+    font-family: 'Sawarabi Mincho', sans-serif;
+    margin-left: 7px;
+    font-weight: bolder;
+
+}
+.comment_button{
+    display: flex;
+}
+.comment{
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: 0 0 8px #6d6c6c;
+}
+.post_creative{
+    margin-left:240px;
+    margin-bottom: 10px;
+}
+
+.comment-link{
+    font-size: 13px;
+    color: #146dac;
 }
