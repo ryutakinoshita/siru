@@ -1,0 +1,40 @@
+{% extends 'siru/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block body %}
+    <section>
+        <hr color="black" class="new_hr_top">
+        <h5 class="comment_new">返信をを投稿</h5>
+        <hr color="black" class="new_hr_bottom">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="comment_button">
+                <a class="comment-link" href="{% url 'detail' post.id %}">コメント一覧</a>
+                <button type="submit"　 class="btn btn-outline-success" id="post_creative">投稿</button>
+            </div>
+            <div class="comment">
+                <table class="text_table">
+                     {% render_field form.text class="comment_text" placeholder="テキストを入力" %}
+                </table>
+            </div>
+         </form>
+    </section>
+    <footer>
+        <div class="fixed-bottom">
+            <nav class="footerNav" >
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-link" id="nav-home-tab" href="{% url 'home' %}" role="tab" >
+                      <img class="nav_img" src="{% static 'img/home.png' %}" alt="ホーム">
+                  </a>
+                  <a class="nav-link" id="nav-add-tab"  href="{% url 'create' %}" >
+                      <img class="nav_img" src="{% static 'img/add.png' %}" alt="投稿">
+                  </a>
+                  <a class="nav-link" id="nav-set-tab" href="{% url 'set' %}" >
+                      <img class="nav_img" src="{% static 'img/set.png' %}" alt="設定">
+                  </a>
+              </div>
+            </nav>
+        </div>
+    </footer>
+{% endblock body %}

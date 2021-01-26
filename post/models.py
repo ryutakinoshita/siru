@@ -21,3 +21,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+class Reply(models.Model):
+    target=models.ForeignKey('Comment',verbose_name='返信対象',on_delete=models.CASCADE)
+    author=models.ForeignKey(User,verbose_name='ユーザー',on_delete=models.SET_DEFAULT,default='退会済みのユーザー')
+    text=models.TextField(verbose_name='コメント返信')
+    time=models.DateTimeField(verbose_name='返信日',default=timezone.now)
+
+    def __str__(self):
+        return self.text

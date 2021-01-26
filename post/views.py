@@ -1,9 +1,9 @@
 from audioop import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render,redirect, get_object_or_404
-from post.forms import PostCreateForm,CommentForm
+from post.forms import PostCreateForm,CommentForm,ReplyForm
 from django.urls import reverse_lazy
-from post.models import Post,Comment
+from post.models import Post,Comment,Reply
 from django.views.generic import (
     ListView,
     CreateView,
@@ -84,3 +84,23 @@ class CommentView(CreateView,LoginRequiredMixin):
         return context
 
 
+class ReplyCreateview(CreateView,LoginRequiredMixin):
+    template_name = 'post/reply.html'
+    model = Reply
+    form_class = ReplyForm
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        comment_pk = self.kwargs['pk']
+        comment = get_object_or_404(Comment, pk=comment_pk)
+        reply = form.save(commit=False)
+        reply.target = comment
+        reply.save()
+        return redirect('detail', pk=comment.target.pk)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        comment_pk = self.kwargs['pk']
+        comment = get_object_or_404(Comment, pk=comment_pk)
+        context['post'] = comment.target
+        return context

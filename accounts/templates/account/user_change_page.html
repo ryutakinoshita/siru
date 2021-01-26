@@ -2,20 +2,24 @@
 {% load static %}
 
 {% block body %}
-<main class="set">
-    <div class="alert">
-        <h4 class="help">情報の変更を行う</h4>
-        <hr color="black">
-         <a href="{% url 'user-change' %}"><h6 class="settitle">ユーザー名・ユーザー情報の変更</h6></a>
-        <hr>
-         <a href="#"><h6 class="settitle">メールアドレスの変更</h6></a>
-        <hr>
-        <a href="{% url 'account_reset_password' %}"><h6 class="settitle">パスワードの変更</h6></a>
-        <hr>
-    </div>
-
-</main>
-
+    <section class="set">
+        <div class="alert">
+            <h4 class="help">情報の変更を行う</h4>
+            <hr color="black">
+             <a href="{% url 'user-change' %}">
+                 <h6 class="settitle">ユーザー名・ユーザー情報の変更</h6>
+             </a>
+            <hr>
+             <a href="#">
+                 <h6 class="settitle">メールアドレスの変更</h6>
+             </a>
+            <hr>
+            <a href="{% url 'account_reset_password' %}">
+                <h6 class="settitle">パスワードの変更</h6>
+            </a>
+            <hr>
+        </div>
+    </section>
     <footer>
         <div class="fixed-bottom">
             <nav class="footerNav sticky-bottom" >
@@ -27,5 +31,4 @@
             </nav>
         </div>
     </footer>
-
 {% endblock %}
