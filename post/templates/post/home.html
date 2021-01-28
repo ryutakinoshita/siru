@@ -4,9 +4,9 @@
 {% block body %}
     <div class="search_var">
         <nav class="navbar navbar-light bg-white">
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="投稿を検索する" aria-label="Search">
-                <button type="button" class="btn btn-outline-dark" id="search_button">検索</button>
+            <form class="form-inline" method="GET" action="{% url 'home' %}">
+                <input class="form-control mr-sm-2" type="text" name="query" placeholder="投稿を検索する" aria-label="Search">
+                <button type="submit" class="btn btn-outline-dark" id="search_button">検索</button>
             </form>
         </nav>
     </div>

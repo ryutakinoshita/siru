@@ -6,7 +6,7 @@ class PostCreateForm(ModelForm):
     class Meta:
         model=Post
         fields=[
-             'title','text',
+             'title','text','tag',
         ]
 
 class CommentForm(ModelForm):
@@ -22,3 +22,10 @@ class ReplyForm(ModelForm):
         fields=[
             'text'
         ]
+#
+# class SearchForm(ModelForm):
+#     class Meta:
+#         model=Post
+#         fields=[
+#             'tag'
+#         ]

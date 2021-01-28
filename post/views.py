@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from post.forms import PostCreateForm,CommentForm,ReplyForm
 from django.urls import reverse_lazy
 from post.models import Post,Comment,Reply
+from django.db.models import Q
 from django.views.generic import (
     ListView,
     CreateView,
@@ -18,6 +19,17 @@ class HomeViews(ListView):#ホーム表示
     template_name = 'post/home.html'
     context_object_name = 'posts'
 
+
+    def get_queryset(self):
+        q_word=self.request.GET.get('query')
+
+        if q_word:
+            object_list=Post.objects.filter(
+                Q(tag__icontains=q_word)
+            )
+        else:
+            object_list=Post.objects.all()
+        return object_list
 
 class PostCreateView(CreateView,LoginRequiredMixin):#投稿機能
     template_name = 'post/post_create.html'

@@ -7,15 +7,16 @@
     <hr color="black" class="new_hr_bottom">
     <form class="create_post" id="post_create" method="post" action="{% url 'create' %}">
         {% csrf_token %}
-        <div class="creates_button">
-        <button type="submit" class="post_creative"><img class="post_img" src="{% static 'img/post.png' %}" alt=""></button>
-        </div>
+        <button type="submit"　 class="btn btn-outline-success" id="post_button">投稿</button>
         <section class="post">
             <table class="title_table">
                 {% render_field form.title class="post_title" placeholder="タイトル" %}
             </table>
             <table class="text_table">
                 {% render_field form.text class="post_text" placeholder="相談してみましょう" %}
+            </table>
+            <table class="text_table">
+                {% render_field form.tag class="post_tag" placeholder="タグを追加" %}
             </table>
         </section>
     </form>
