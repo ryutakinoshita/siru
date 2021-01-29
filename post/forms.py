@@ -22,10 +22,3 @@ class ReplyForm(ModelForm):
         fields=[
             'text'
         ]
-#
-# class SearchForm(ModelForm):
-#     class Meta:
-#         model=Post
-#         fields=[
-#             'tag'
-#         ]

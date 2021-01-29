@@ -1,0 +1,27 @@
+from django import forms
+from django.forms import ModelForm
+from siru.models import Contact
+from django.conf import settings
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse
+
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = [
+
+         'name','email','message'
+        ]
+
+    def send_email(self):
+        subject = "お問い合わせ"
+        message = self.cleaned_data['message']
+        name = self.cleaned_data['name']
+        email = self.cleaned_data['email']
+        from_email = '{name} <{email}>'.format(name=name, email=email)
+        recipient_list = [settings.EMAIL_HOST_USER]
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except BadHeaderError:
+            return HttpResponse("無効なヘッダが検出されました。")
