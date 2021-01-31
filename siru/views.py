@@ -9,7 +9,7 @@ from django.views.generic import (
 )
 
 
-class SetViews(TemplateView):
+class SetViews(TemplateView,LoginRequiredMixin):
     template_name = 'siru/set.html'
 
 
@@ -24,7 +24,7 @@ class ContactView(CreateView,LoginRequiredMixin):
         form.send_email()
         return super().form_valid(form)
 
-class ContactResultView(TemplateView):
+class ContactResultView(TemplateView,LoginRequiredMixin):
     template_name = 'siru/contact_result.html'
 
     def get_context_data(self, **kwargs):

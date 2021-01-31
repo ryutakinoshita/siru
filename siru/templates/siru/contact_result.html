@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'siru/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block body %}
+    <p class="contact_result">お問い合わせありがとうございます。</p>
+    <p class="contact_result">返信には数日頂く場合がございます。少々お待ちくさい。</p>
+    <a class="home-link" href="{% url 'home' %}" >ホームへ</a>
+        <footer>
+        <div class="fixed-bottom">
+            <nav class="footerNav sticky-bottom" >
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                     <a class="nav-link" id="nav-home-tab" href="{% url 'home' %}" role="tab" >
+                         <img class="nav_img" src="{% static 'img/home.png' %}" alt="ホーム"></a>
+                     <a class="nav-link" id="nav-add-tab"  href="{% url 'create' %}" >
+                         <img class="nav_img" src="{% static 'img/add.png' %}" alt="投稿">
+                     </a>
+                     <a class="nav-link" id="nav-set-tab" href="{% url 'set' %}" >
+                         <img class="nav_img" src="{% static 'img/set.png' %}" alt="設定">
+                     </a>
+                  </div>
+            </nav>
+        </div>
+    </footer>
+{% endblock %}

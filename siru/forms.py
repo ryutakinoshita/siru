@@ -11,15 +11,14 @@ class ContactForm(ModelForm):
         model = Contact
         fields = [
 
-         'name','email','message'
+       'email','message'
         ]
 
     def send_email(self):
         subject = "お問い合わせ"
         message = self.cleaned_data['message']
-        name = self.cleaned_data['name']
         email = self.cleaned_data['email']
-        from_email = '{name} <{email}>'.format(name=name, email=email)
+        from_email = ' <{email}>'.format( email=email)
         recipient_list = [settings.EMAIL_HOST_USER]
         try:
             send_mail(subject, message, from_email, recipient_list)

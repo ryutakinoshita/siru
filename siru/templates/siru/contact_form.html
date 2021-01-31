@@ -1,18 +1,35 @@
 {% extends 'siru/base.html' %}
 {% load static %}
-
+{% load widget_tweaks %}
 
 {% block body %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h1>お問い合わせ</h1>
-      <p>お問い合わせフォームです。</p>
-      <form method="POST">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">送信</button>
-      </form>
-    </div>
-  </div>
-</div>
+    <hr color="black" class="new_hr_top">
+    <h5 class="form_new">お問い合わせ</h5>
+    <hr color="black" class="new_hr_bottom">
+    <form class="contact_post" id="contact_create" method="POST" >
+        {% csrf_token %}
+        <button type="submit"　 class="btn btn-outline-danger" id="contact_button">送信</button>
+            <table class="email_table">
+                {% render_field form.email class="contact_email" placeholder="返信メールアドレス" %}
+            </table>
+            <table class="message_table">
+                {% render_field form.message class="contact_message" placeholder="内容" %}
+            </table>
+    </form>
+        <footer>
+        <div class="fixed-bottom">
+            <nav class="footerNav sticky-bottom" >
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                     <a class="nav-link" id="nav-home-tab" href="{% url 'home' %}" role="tab" >
+                         <img class="nav_img" src="{% static 'img/home.png' %}" alt="ホーム"></a>
+                     <a class="nav-link" id="nav-add-tab"  href="{% url 'create' %}" >
+                         <img class="nav_img" src="{% static 'img/add.png' %}" alt="投稿">
+                     </a>
+                     <a class="nav-link" id="nav-set-tab" href="{% url 'set' %}" >
+                         <img class="nav_img" src="{% static 'img/set.png' %}" alt="設定">
+                     </a>
+                  </div>
+            </nav>
+        </div>
+    </footer>
 {% endblock %}
